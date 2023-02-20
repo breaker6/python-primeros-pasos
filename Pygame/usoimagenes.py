@@ -33,12 +33,12 @@ while True:
    
 
     ####FIN LÓGICA DEL JUEGO
+    #######Zona de dibujo
+    
     #Rellenamos la pantalla con la imagen guardada en la posición que le decimos
     screen.blit(background, [0, 0])
     #Cargamos la imagen del personaje
     screen.blit(character, [0, 100])
-    #######Zona de dibujo
- 
  
     #######Fin Zona de dibujo
     #Actualizamos pantalla
