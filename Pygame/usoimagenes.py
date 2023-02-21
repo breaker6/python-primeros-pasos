@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 #Cargamos la imagen en la variable background. El convert del final ayuda a pygame a procesar la imagen
 background = pygame.image.load("Pygame/images/background.png").convert()
 #Cargamos la imagen del personaje
-character = pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0000-right.png").convert()
+character = pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0000.png").convert()
 #Eliminamos el color de fondo de la imagen del personaje
 character.set_colorkey([0, 0, 0])
 
