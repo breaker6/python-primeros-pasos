@@ -20,40 +20,53 @@ clock = pygame.time.Clock()
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
+        #Cargamos todas las imagenes del sprite en el array self.images
         self.images = []
-        #self.image = pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0000-right.png").convert()
-        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/prueba/tifa-sprite-0000.jpg").convert())
-        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/prueba/tifa-sprite-0001.jpg").convert())
-        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/prueba/tifa-sprite-0002.jpg").convert())
-        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/prueba/tifa-sprite-0003.jpg").convert())
+        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0000.png").convert())
+        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0001.png").convert())
+        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0002.png").convert())
+        self.images.append(pygame.image.load("Pygame/images/tifa/battle_position/tifa-sprite-0003.png").convert())
 
-        #self.images.set_colorkey(BLACK)
-
+        #Iniciamos el indice que dirá en que fotograma estamos de la animación
         self.index = 0
         self.image = self.images[self.index]
         self.rect = self.image.get_rect()
-        #Marcamos las coordenadas iniciales y lo dibujamos en ellas
+        #Marcamos las coordenadas iniciales
         coord_x = 10
         coord_y = 150
+        #Pintamos el sprite
         self.rect.x = coord_x
         self.rect.y = coord_y
-    #Cuando se ejecuta el update, revisará si tiene que mover el objeto o no
-    #Para ello, usamos las variables globales x_speed y y_speed
+        #Variable para contar los FPS (Nos permitirá controlar la velocidad de la animación)
+        self.countFPS = 0
+        #Volteamos la imagen (Lo hacemos porque el sprite está mirando a la izquierda y queremos que mire a la derecha)
+        self.image = pygame.transform.flip(self.images[self.index], True, False)
+    #En el update controlaremos varias cosas
     def update(self):
-        self.index += 1
+        #Controlaremos los FPS con la variable countFPS. Eso nos permitirá controlar la velocidad de la animación
+        self.countFPS += 1
+        if self.countFPS >= 5:
+            #Cuando llegamos al número de fotogramas escrito, aumentamos el indice de la animación
+            self.index += 1
+            #Si el indice llega al último elemento, volverá a 0
+            if self.index >= len(self.images):
+                self.index = 0
+            #Dibujamos la imagen en pantalla (La volteamos para que mire a la derecha con flip)        
+            self.image = pygame.transform.flip(self.images[self.index], True, False)
+            self.image.set_colorkey(BLACK)
+            self.countFPS = 0
+        self.rect.x += x_speed
+        self.rect.y += y_speed
 
-        if self.index >= len(self.images):
-            self.index = 0
-        
-        self.image = self.images[self.index]
-        #self.rect.x += x_speed
-        #self.rect.y += y_speed
+#Cargamos el fondo de la escena
+background = pygame.image.load("Pygame/images/background.png").convert()
 
+#Iniciamos las variables globales que marcarán el movimiento del personaje
+x_speed = 0
+y_speed = 0
 
-
-item_list = pygame.sprite.Group()
+#Creamos el listado de los sprites, creamos al jugador y lo añadimos al listado de todos los sprites
 all_sprite_list = pygame.sprite.Group()
-
 player = Player()
 all_sprite_list.add(player)
 
@@ -91,14 +104,14 @@ while True:
    
     ####FIN LÓGICA DEL JUEGO
     #######Zona de dibujo
-    #Rellenamos la pantalla con la imagen guardada en la posición que le decimos
-    #screen.blit(background, [0, 0])
+    #Dibujamos el background
+    screen.blit(background, [0, 0])
     #Dibujamos los sprites que tenemos en el grupo all_sprite_list
     all_sprite_list.draw(screen)
-    #Ejecutamos el metodo update de los sprites. Esto hará que el personaje se mueva en función de si estamos pulsando
+    #Ejecutamos el metodo update de los sprites que controlará el movimiento y las animaciones
     player.update()
 
     #Actualizamos pantalla
     pygame.display.flip()
     #Definimos los FPS que se mueve
-    clock.tick(20)
+    clock.tick(60)
