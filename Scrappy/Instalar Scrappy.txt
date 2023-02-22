@@ -1,0 +1,19 @@
+Para instalar scrappy, primero tendremos que ejecutar en la consola el siguiente comando:
+
+pip install requests
+
+Tras eso, vamos al siguiente enlace y descargamos la versión que corresponda a nuestro python:
+
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
+
+Si no sabemos cual es la versión de nuestro python, si ejecutamos en el terminal el comando python, nos lo dirá el terminal.
+
+Una vez descargado, tenemos que instalarlo. Para ello, vamos a la ruta donde tengamos el archivo descargado y lo instalamos con pip:
+
+pip install twisted_iocpsupport-1.0.2-cp310-cp310-win_amd64.whl
+
+NOTA: No cambiar el nombre del archivo descargado. De hacerlo, daría error la instalación.
+
+Tras instalarlo, llevaremos a cabo el último paso que es instalar scrappy. Para hacerlo, ejecutaremos el siguiente comando:
+
+pip install scrappy --user
