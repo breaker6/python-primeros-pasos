@@ -1,3 +1,5 @@
+#scrapy runspider stackoverflowconscrappy.py -o resultados.csv -t csv
+#scrapy runspider stackoverflowconscrappy.py -O result.json -t json
 
 from scrapy.item import Field
 from scrapy.item import Item
