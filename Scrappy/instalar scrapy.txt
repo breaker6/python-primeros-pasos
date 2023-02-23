@@ -1,0 +1,8 @@
+Descargamos e instalamos Anaconda desde este enlace:
+https://www.anaconda.com/products/distribution
+
+Luego ejecutar desde el terminal:
+conda install -c conda-forge scrapy
+
+O este otro:
+pip install Scrapy
