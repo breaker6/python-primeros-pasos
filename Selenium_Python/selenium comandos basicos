@@ -1,0 +1,20 @@
+Instrucciones básicas
+
+Importar libreria:
+from selenium import webdriver
+Cargar el navegador en que haremos las pruebas:
+driver = webdriver.Chrome()
+Cargamos la URL que queramos:
+driver.get("URL")
+Sacamos el título de la página
+driver.title
+
+Importamos la librería By que nos será util para buscar elementos:
+from selenium.webdriver.common.by import By
+Buscamos el elemento con la etiqueta title:
+driver.find_element(By.TAGNAME,"title")
+Igual que el anterior pero sacando el texto:
+driver.find_element(By.TAGNAME,"title").text
+Buescamos el elemento con el ID title:
+driver.find_element(By.ID,"title")
+driver.find_element(By.ID,"title").text
