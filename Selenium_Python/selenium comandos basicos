@@ -32,3 +32,20 @@ usuario.send_keys("fbeltran") #Introducimos el texto con el usuario
 password = driver.find_element(By.NAME,"password") #Hacemos lo mismo con la contraseña
 password.send_keys("contraseña")
 driver.find_element(By.NAME,"bEntrar").click() #Pulsamos en el botón para iniciar sesión
+
+Buscar un elemento por su clase:
+# Supongamos que la clase del elemento que deseas buscar es 'clase_ejemplo'
+element = driver.find_element_by_class_name('clase_ejemplo')  # Si esperas un solo elemento
+# O si esperas múltiples elementos con la misma clase:
+elements = driver.find_elements_by_class_name('clase_ejemplo')
+
+Buscar un elemento con varias clases:
+# Busca el elemento con varias clases
+element = driver.find_element_by_css_selector('.clase1.clase2')
+# Busca todos los elementos que tienen las clases 'clase1' y 'clase2'
+elements = driver.find_elements_by_css_selector('.clase1.clase2')
+# Itera a través de los elementos y realiza acciones con cada uno de ellos
+for element in elements:
+    texto = element.text
+    print(texto)
+
