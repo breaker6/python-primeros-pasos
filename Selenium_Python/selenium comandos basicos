@@ -20,3 +20,15 @@ driver.find_element(By.ID,"title")
 driver.find_element(By.ID,"title").text
 Buscamos y damos click a un Link buscando el texto con el que está escrito:
 driver.find_element(By.LINK_TEXT,"Texto enlace").click()
+
+Ejemplo de rellenado de un formulario de usuario y contraseña (con comentarios):
+from selenium import webdriver #Importamos el webdriver
+from selenium.webdriver.common.by import By #Importamos la libreria By para buscar elementos
+from selenium.webdriver.common.keys import Keys #Importamos la libreria Keys que nos permitirá rellenar campos
+driver = webdriver.Chrome() #Abrimos el navegador
+driver.get("URL") #Abrimos la URL
+usuario = driver.find_element(By.NAME,"username") #Buscamos el elemento con el nombre username y copiamos su ubicación en la variable usuario
+usuario.send_keys("fbeltran") #Introducimos el texto con el usuario
+password = driver.find_element(By.NAME,"password") #Hacemos lo mismo con la contraseña
+password.send_keys("contraseña")
+driver.find_element(By.NAME,"bEntrar").click() #Pulsamos en el botón para iniciar sesión
