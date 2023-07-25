@@ -18,3 +18,5 @@ driver.find_element(By.TAGNAME,"title").text
 Buescamos el elemento con el ID title:
 driver.find_element(By.ID,"title")
 driver.find_element(By.ID,"title").text
+Buscamos y damos click a un Link buscando el texto con el que está escrito:
+driver.find_element(By.LINK_TEXT,"Texto enlace").click()
