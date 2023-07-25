@@ -1,3 +1,4 @@
+#Necesario instalar unittest ejecutando desde el terminal pip install unittest
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
